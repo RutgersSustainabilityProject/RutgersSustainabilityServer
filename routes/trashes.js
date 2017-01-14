@@ -13,7 +13,7 @@ router.post('/postTrash', upload.single('trashPhoto'), function(req, res, next){
   var lat = req.body.latitude;
   var lon = req.body.longitude;
   var epoch = req.body.epoch;
-  var tags req.body.tags;
+  var tags = req.body.tags;
 
   var data = fs.readFileSync(req.file.path);
   var contentType = 'image/jpeg';
@@ -54,7 +54,7 @@ router.get('/getTrashByUserId', upload.array(), function(req, res){
       } else {
         var response = {
           status : 'error',
-          message : 'Error retrieving trash, ' + err.msg;
+          message : 'Error retrieving trash, ' + err.msg
         }
         res.status(200).send(response);
       }

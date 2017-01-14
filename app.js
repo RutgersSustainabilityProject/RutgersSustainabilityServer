@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var app = express();
-var users = require('./routes/trashes');
+var trashes = require('./routes/trashes');
 var http = require('http').Server(app);
 
 mongoose.connect('mongodb://localhost/rsps', function(err){
