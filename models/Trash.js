@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var TrashSchema = new mongoose.Schema({
   userId: {type: String, required: true},
-  picture: {data: Buffer, contentType: String},
+  picture: {type: String},
   latitude: {type: Number, required: true},
   longitude: {type: Number, required: true},
   epoch: {type: Number, required: true},

@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 var Trash = require('../models/Trash.js')
 
-router.post('/postTrash', upload.single('trashPhoto'), function(req, res, next){
+router.post('/postTrash', upload.array(), function(req, res, next){
 
   var userId = req.body.userId;
   var lat = req.body.latitude;
@@ -15,12 +15,10 @@ router.post('/postTrash', upload.single('trashPhoto'), function(req, res, next){
   var epoch = req.body.epoch;
   var tags = req.body.tags;
 
-  var data = fs.readFileSync(req.file.path);
-  var contentType = 'image/jpeg';
-  var img = {data : data, contentType : contentType};
+  var data = req.body.trashPhoto;
   var trash = {
     userId : userId,
-    picture : img,
+    picture : data,
     latitude : lat,
     longitude : lon,
     epoch : epoch,
