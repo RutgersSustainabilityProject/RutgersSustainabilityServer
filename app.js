@@ -10,7 +10,7 @@ var app = express();
 var trashes = require('./routes/trashes');
 var http = require('http').Server(app);
 
-mongoose.connect('mongodb://localhost/rsps', function(err){
+mongoose.connect('mongodb://shreyashirday:myswapp2014@ds127389.mlab.com:27389/heroku_4rjn6gk7', function(err){
   if (err){
     console.log('unable to connect to MongoDB', err);
     return;
