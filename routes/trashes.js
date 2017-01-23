@@ -39,7 +39,7 @@ router.post('/postTrash', upload.array(), function(req, res, next){
 });
 
 router.get('/getTrashByUserId', function(req, res){
-  var userId = req.params.userId;
+  var userId = req.query.userId;
   console.log("userId = " + userId);
   userId = String(userId);
   Trash.find({'userId' : userId}, function(err, docs) {
