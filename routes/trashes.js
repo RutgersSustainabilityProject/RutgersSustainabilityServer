@@ -38,8 +38,8 @@ router.post('/postTrash', upload.array(), function(req, res, next){
   });
 });
 
-router.get('/getTrashByUserId', upload.array(), function(req, res){
-  var userId = req.body.userId;
+router.get('/getTrashByUserId', function(req, res){
+  var userId = req.params.userId;
   Trash.find({$or:[{'userId' : userId}]}, function(err, docs) {
       if (!err) {
         var response = {
