@@ -1,4 +1,4 @@
-var PORT = 3000;
+var port = process.env.PORT || 3000;
 
 var express = require('express');
 var path = require('path');
@@ -18,8 +18,8 @@ mongoose.connect('mongodb://shreyashirday:myswapp2014@ds127389.mlab.com:27389/he
   console.log('Successfully connected to MongoDB');
 });
 
-http.listen(PORT, function(){
-  console.log('listening on PORT 3000');
+http.listen(port, function(){
+  console.log('listening on PORT: ' + port);
 });
 
 app.use('/trash', trashes);
