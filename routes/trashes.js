@@ -40,12 +40,13 @@ router.post('/postTrash', upload.array(), function(req, res, next){
 
 router.get('/getTrashByUserId', function(req, res){
   var userId = req.params.userId;
-  Trash.find({$or:[{'userId' : userId}]}, function(err, docs) {
+  userId = String(userId);
+  Trash.find({'userId' : userId}, function(err, docs) {
       if (!err) {
         var response = {
           status : 'ok',
           message : 'Trash retrieved successfully',
-          snaps : docs
+          trash : docs
         };
         res.status(200).send(response);
         return;
