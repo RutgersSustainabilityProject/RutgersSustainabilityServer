@@ -32,7 +32,7 @@ router.post('/postTrash', upload.array(), function(req, res, next){
     var response = {
       status : 'ok',
       message : 'Trash posted!',
-      trash : trash
+      trash : [trash]
     };
     res.status(201).send(response);
   });
