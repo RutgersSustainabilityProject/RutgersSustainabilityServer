@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 var trashes = require('./routes/trashes');
+var noises = require('./routes/noises');
 var http = require('http').Server(app);
 
 mongoose.connect('mongodb://shreyashirday:myswapp2014@ds127389.mlab.com:27389/heroku_4rjn6gk7', function(err){
@@ -23,5 +24,6 @@ http.listen(port, function(){
 });
 
 app.use('/trash', trashes);
+app.use('/noise', noises);
 
 module.exports = app;

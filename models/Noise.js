@@ -1,17 +1,18 @@
 var mongoose = require('mongoose');
 
-var TrashSchema = new mongoose.Schema({
+var NoiseSchema = new mongoose.Schema({
   userId: {type: String, required: true},
-  picture: {type: String, required: true},
+  audio: {type: String, required: true},
   latitude: {type: Number, required: true},
   longitude: {type: Number, required: true},
+  decibels: {type: Number, required: true},
   epoch: {type: Number, required: true},
   tags: {type: String}
 });
 
-TrashSchema.methods.toJSON = function() {
+NoiseSchema.methods.toJSON = function() {
   var obj = this.toObject();
   return obj;
 };
 
-module.exports = mongoose.model("Trash", TrashSchema);
+module.exports = mongoose.model("Noise", NoiseSchema);
