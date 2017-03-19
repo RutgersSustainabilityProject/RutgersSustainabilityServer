@@ -40,23 +40,43 @@ router.post('/postNoise', upload.array(), function(req, res, next){
 
 router.get('/getNoiseByUserId', function(req, res){
   var userId = req.query.userId;
-  Noise.find({'userId' : userId}, function(err, docs) {
-      if (!err) {
-        var response = {
-          status : 'ok',
-          message : 'Noise retrieved successfully',
-          trash : docs
-        };
-        res.status(200).send(response);
-        return;
-      } else {
-        var response = {
-          status : 'error',
-          message : 'Error retrieving noise, ' + err.msg
+  if (userId === 'all') {
+    Noise.find({}, function(err, docs) {
+        if (!err) {
+          var response = {
+            status : 'ok',
+            message : 'Noise retrieved successfully',
+            trash : docs
+          };
+          res.status(200).send(response);
+          return;
+        } else {
+          var response = {
+            status : 'error',
+            message : 'Error retrieving noise, ' + err.msg
+          }
+          res.status(200).send(response);
         }
-        res.status(200).send(response);
-      }
-  });
+    });
+  } else {
+    Noise.find({'userId' : userId}, function(err, docs) {
+        if (!err) {
+          var response = {
+            status : 'ok',
+            message : 'Noise retrieved successfully',
+            trash : docs
+          };
+          res.status(200).send(response);
+          return;
+        } else {
+          var response = {
+            status : 'error',
+            message : 'Error retrieving noise, ' + err.msg
+          }
+          res.status(200).send(response);
+        }
+    });
+  }
 });
 
 module.exports = router;

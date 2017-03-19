@@ -40,23 +40,43 @@ router.post('/postTrash', upload.array(), function(req, res, next){
 
 router.get('/getTrashByUserId', function(req, res){
   var userId = req.query.userId;
-  Trash.find({'userId' : userId}, function(err, docs) {
-      if (!err) {
-        var response = {
-          status : 'ok',
-          message : 'Trash retrieved successfully',
-          trash : docs
-        };
-        res.status(200).send(response);
-        return;
-      } else {
-        var response = {
-          status : 'error',
-          message : 'Error retrieving trash, ' + err.msg
+  if (userId === 'all') {
+    Trash.find({}, function(err, docs) {
+        if (!err) {
+          var response = {
+            status : 'ok',
+            message : 'Trash retrieved successfully',
+            trash : docs
+          };
+          res.status(200).send(response);
+          return;
+        } else {
+          var response = {
+            status : 'error',
+            message : 'Error retrieving trash, ' + err.msg
+          }
+          res.status(200).send(response);
         }
-        res.status(200).send(response);
-      }
-  });
+    });
+  } else {
+    Trash.find({'userId' : userId}, function(err, docs) {
+        if (!err) {
+          var response = {
+            status : 'ok',
+            message : 'Trash retrieved successfully',
+            trash : docs
+          };
+          res.status(200).send(response);
+          return;
+        } else {
+          var response = {
+            status : 'error',
+            message : 'Error retrieving trash, ' + err.msg
+          }
+          res.status(200).send(response);
+        }
+    });
+  }
 });
 
 module.exports = router;
