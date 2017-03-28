@@ -31,8 +31,8 @@ router.post('/postNoise', upload.array(), function(req, res, next){
     }
     var response = {
       status : 'ok',
-      message : 'Trash posted!',
-      trash : [trash]
+      message : 'Noise posted!',
+      noise : [noise]
     };
     res.status(201).send(response);
   });
@@ -46,7 +46,7 @@ router.get('/getNoiseByUserId', function(req, res){
           var response = {
             status : 'ok',
             message : 'Noise retrieved successfully',
-            trash : docs
+            noise : docs
           };
           res.status(200).send(response);
           return;
@@ -64,7 +64,7 @@ router.get('/getNoiseByUserId', function(req, res){
           var response = {
             status : 'ok',
             message : 'Noise retrieved successfully',
-            trash : docs
+            noise : docs
           };
           res.status(200).send(response);
           return;
